@@ -1,0 +1,57 @@
+git 备份最初文件 
+2014  git init 
+ 2015  git add .
+ 2016  git commit  -s
+ 2017  git config --global core.editor vim
+ 2018  git config --global merge.tool vimdiff
+ 2019  git config --global color.ui auto
+ 2022  git config --global user.name "Haihua.Huang"
+ 2023  git config --global user.email "haihua.huang@archermind.com"
+ 2024  git config --list
+ 2025  git branch 
+ 2026  git checkout -b notification
+
+git remote add origin git@github.com:Calf1234/android5.0.git
+git push origin master 
+
+推送系统应用
+ 2003  adb root
+ 2004  adb remount
+ 2005  adb push out/target/product/Sf3g_mrd5_p1_v2_512m/system/priv-app/SystemUI/SystemUI.apk /system/priv-app/SystemUI/
+ 2006  adb reboot
+
+
+vim
+翻下一页：ctrl + f
+翻上一页：ctrl + b
+
+http://zhuanlan.zhihu.com/kaede/20564614
+
+1. Message、MessageQueue、Looper、Handler分析
+http://www.tuicool.com/articles/vamURnu
+
+源码环境编译 android工程
+————————————————————————————————————————————————————————————————————————————————————————
+工程开发在Eclipse中
+1、在工程根目录下，新增Android.mk文件
+  1 LOCAL_PATH:=$(call my-dir)
+  2 include $(CLEAR_VARS)
+  3 LOCAL_MODULE_TAGS:=optional
+  4 LOCAL_RESOURCE_DIR:=$(LOCAL_PATH)/res
+  5 LOCAL_SRC_FILES:=$(call all-subdir-java-files, src)
+  6 LOCAL_PACKAGE_NAME:=TestApplication
+  7 LOCAL_CERTIFICATE := platform
+  8 LOCAL_PRIVILEGED_MODULE := true                                                                        
+  9 include $(BUILD_PACKAGE)
+
+2、在源码根目录编译
+出现如下问题：
+    ERROR: /work/ICS/out/target/common/obj/APPS/TestApplication_intermediates/src/com/example/testapplication/R.java:10: The type R is already defined
+原因：
+    src下有一个R文件，gen下也有一个R文件，重复了。
+解决方法：
+    把工程根目录/gen/.../R.java删除，重新编译即可
+
+3、在源码根目录，make snod，生成镜像
+
+
